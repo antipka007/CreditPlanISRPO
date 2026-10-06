@@ -24,5 +24,11 @@ namespace CreditApp.Windows
             InitializeComponent();
         }
 
+        private void regBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new Registration();
+            window.Show();
+            this.Close();
+        }
     }
 }
