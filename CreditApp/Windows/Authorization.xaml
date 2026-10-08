@@ -41,7 +41,7 @@
                             BorderThickness="0"
                             Background="#FF00A3DA" 
                             Foreground="White" 
-                            FontSize="20"/>
+                            FontSize="20" Click="authBtn_Click"/>
                 </Border>
                 <Border Background="#FF1AD82F"
                         BorderThickness="1" 

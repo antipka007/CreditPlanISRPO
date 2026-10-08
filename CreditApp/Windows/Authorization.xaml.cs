@@ -30,5 +30,41 @@ namespace CreditApp.Windows
             window.Show();
             this.Close();
         }
+
+        private void authBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string login = loginTxtBox.Text.Trim();
+            string password = passTxtBox.Password.Trim();
+            if (string.IsNullOrEmpty(login))
+            {
+                MessageBox.Show("Заполните поле \"Логин\"", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Information);
+                loginTxtBox.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Заполните поле \"Пароль\"", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Information);
+                passTxtBox.Focus();
+                return;
+            }
+            var select = App.Context.Users.FirstOrDefault(u => u.login == login && u.password == password);
+            if (select == null)
+            {
+                MessageBox.Show("Неверный логин или пароль!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            App.CurrentUser = select;
+            if (App.CurrentUser.id_role == 1)
+            {
+                App.isAdmin = true;
+            }
+            else
+            {
+                App.isAdmin = false;
+            }
+            var window = new MainWindow();
+            window.Show();
+            this.Close();
+        }
     }
 }
