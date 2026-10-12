@@ -13,15 +13,14 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
-        <TextBlock Grid.Row="0"
-                   Text="Кредитные планы"
+        <StackPanel Grid.Row="0" Orientation="Vertical">
+        <TextBlock Text="Кредитные планы"
                    Style="{StaticResource SubTitleText}"/>
-        <TextBlock Grid.Row="0"
-                   Text="Выберите план, укажите сумму и срок, затем отправьте заявку"
+        <TextBlock Text="Выберите план, укажите сумму и срок, затем отправьте заявку"
                    FontSize="13"
                    Foreground="{StaticResource MutedBrush}"
                    Margin="10,2,10,0"/>
+        </StackPanel>
 
         <DataGrid Grid.Row="1"
                   x:Name="plansGrid"
