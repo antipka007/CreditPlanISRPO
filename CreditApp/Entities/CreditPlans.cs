@@ -19,9 +19,9 @@ namespace CreditApp.Entities
             this.Accounts = new HashSet<Accounts>();
         }
     
-        public int id_credit { get; set; }
-        public Nullable<decimal> cred_percent { get; set; }
-        public Nullable<int> max_balance { get; set; }
+        public int id_credit_plan { get; set; }
+        public decimal cred_percent { get; set; }
+        public decimal max_balance { get; set; }
     
         public virtual ICollection<Accounts> Accounts { get; set; }
     }

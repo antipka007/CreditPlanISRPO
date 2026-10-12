@@ -13,7 +13,7 @@ namespace CreditApp
     /// </summary>
     public partial class App : Application
     {
-        public static Entities.BankEntities Context { get; } = new Entities.BankEntities();
+        public static Entities.ISRPObankEntities Context { get; } = new Entities.ISRPObankEntities();
         public static Entities.Users CurrentUser { get; set; }
         public static bool isAdmin { get; set; }
     }

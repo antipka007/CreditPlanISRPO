@@ -16,10 +16,11 @@ namespace CreditApp.Entities
     {
         public int id_request { get; set; }
         public int id_client { get; set; }
-        public Nullable<decimal> summ_credit { get; set; }
-        public Nullable<decimal> perc_credit { get; set; }
-        public Nullable<int> month_quantity { get; set; }
+        public decimal summ_credit { get; set; }
+        public decimal perc_credit { get; set; }
+        public int month_quantity { get; set; }
         public string status_req { get; set; }
+        public System.DateTime create_date { get; set; }
     
         public virtual Clients Clients { get; set; }
     }

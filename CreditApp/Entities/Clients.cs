@@ -28,7 +28,7 @@ namespace CreditApp.Entities
         public string gender { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
-        public Nullable<bool> isBanned { get; set; }
+        public bool isBanned { get; set; }
     
         public virtual ICollection<Accounts> Accounts { get; set; }
         public virtual Users Users { get; set; }

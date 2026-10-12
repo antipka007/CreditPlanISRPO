@@ -13,10 +13,10 @@ namespace CreditApp.Entities
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BankEntities : DbContext
+    public partial class ISRPObankEntities : DbContext
     {
-        public BankEntities()
-            : base("name=BankEntities")
+        public ISRPObankEntities()
+            : base("name=ISRPObankEntities")
         {
         }
     
@@ -30,7 +30,6 @@ namespace CreditApp.Entities
         public DbSet<CreditPlans> CreditPlans { get; set; }
         public DbSet<Requests> Requests { get; set; }
         public DbSet<Roles> Roles { get; set; }
-        public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<Users> Users { get; set; }
     }
 }

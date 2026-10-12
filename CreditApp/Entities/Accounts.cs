@@ -17,10 +17,11 @@ namespace CreditApp.Entities
         public int id_account { get; set; }
         public int id_client { get; set; }
         public string account_number { get; set; }
-        public Nullable<decimal> balance { get; set; }
+        public decimal balance { get; set; }
         public Nullable<int> id_credit_plan { get; set; }
-        public Nullable<int> month_quantity { get; set; }
-        public Nullable<bool> isActive { get; set; }
+        public int month_quantity { get; set; }
+        public bool isActive { get; set; }
+        public System.DateTime open_date { get; set; }
     
         public virtual Clients Clients { get; set; }
         public virtual CreditPlans CreditPlans { get; set; }
