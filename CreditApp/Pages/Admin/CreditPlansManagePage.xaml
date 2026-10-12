@@ -1,0 +1,56 @@
+<Page x:Class="CreditApp.Pages.Admin.CreditPlansManagePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      Title="Кредитные планы"
+      Background="Transparent"
+      Loaded="Page_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Управление кредитными планами" Style="{StaticResource SubTitleText}"/>
+
+        <DataGrid Grid.Row="1"
+                  x:Name="plansGrid"
+                  Style="{StaticResource DataGridStyle}"
+                  Margin="10"
+                  SelectionChanged="plansGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding id_credit_plan}" Width="60"/>
+                <DataGridTextColumn Header="Процент, %" Binding="{Binding cred_percent}" Width="*"/>
+                <DataGridTextColumn Header="Макс. сумма" Binding="{Binding max_balance, StringFormat=N2}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Border Grid.Row="2"
+                Background="White"
+                BorderBrush="{StaticResource BorderBrushLight}"
+                BorderThickness="1"
+                CornerRadius="8"
+                Margin="10">
+            <StackPanel Margin="10">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <Label Content="Процент, %" Style="{StaticResource FieldLabel}"/>
+                        <TextBox x:Name="percentBox" Style="{StaticResource InputBox}" Width="160"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="Макс. сумма" Style="{StaticResource FieldLabel}"/>
+                        <TextBox x:Name="maxBox" Style="{StaticResource InputBox}" Width="180"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Добавить" Style="{StaticResource SuccessButton}" FontSize="16" Click="addBtn_Click"/>
+                    <Button Content="Изменить" Style="{StaticResource PrimaryButton}" FontSize="16" Click="editBtn_Click"/>
+                    <Button Content="Удалить" Style="{StaticResource DangerButton}" FontSize="16" Click="deleteBtn_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

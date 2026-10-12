@@ -1,0 +1,41 @@
+<Page x:Class="CreditApp.Pages.Admin.RequestsManagePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      Title="Заявки"
+      Background="Transparent"
+      Loaded="Page_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Заявки на кредит" Style="{StaticResource SubTitleText}"/>
+
+        <DataGrid Grid.Row="1"
+                  x:Name="requestsGrid"
+                  Style="{StaticResource DataGridStyle}"
+                  Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding id_request}" Width="50"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Clients.secondname}" Width="*"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Clients.firstname}" Width="*"/>
+                <DataGridTextColumn Header="Сумма" Binding="{Binding summ_credit, StringFormat=N2}" Width="*"/>
+                <DataGridTextColumn Header="Процент, %" Binding="{Binding perc_credit}" Width="*"/>
+                <DataGridTextColumn Header="Срок, мес." Binding="{Binding month_quantity}" Width="*"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding StatusText}" Width="*"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding create_date, StringFormat=dd.MM.yyyy HH:mm}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0,10,10">
+            <Button Content="Одобрить" Style="{StaticResource SuccessButton}" FontSize="16" Click="approveBtn_Click"/>
+            <Button Content="Отклонить" Style="{StaticResource DangerButton}" FontSize="16" Click="rejectBtn_Click"/>
+            <Button Content="Обновить" Style="{StaticResource PrimaryButton}" FontSize="16" Click="refreshBtn_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -54,16 +54,17 @@ namespace CreditApp.Windows
                 return;
             }
             App.CurrentUser = select;
-            if (App.CurrentUser.id_role == 1)
+            App.isAdmin = select.id_role == 1;
+
+            if (App.isAdmin)
             {
-                App.isAdmin = true;
+                new AdminWindow().Show();
             }
             else
             {
-                App.isAdmin = false;
+                App.CurrentClient = select.Clients.FirstOrDefault();
+                new ClientWindow().Show();
             }
-            var window = new MainWindow();
-            window.Show();
             this.Close();
         }
     }

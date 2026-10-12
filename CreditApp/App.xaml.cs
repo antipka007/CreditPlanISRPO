@@ -15,6 +15,7 @@ namespace CreditApp
     {
         public static Entities.ISRPObankEntities Context { get; } = new Entities.ISRPObankEntities();
         public static Entities.Users CurrentUser { get; set; }
+        public static Entities.Clients CurrentClient { get; set; }
         public static bool isAdmin { get; set; }
     }
 }
