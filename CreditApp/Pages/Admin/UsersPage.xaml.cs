@@ -19,7 +19,7 @@ namespace CreditApp.Pages.Admin
         {
             var rows = new List<UserRow>();
 
-            foreach (var user in App.Context.Users.ToList())
+            foreach (var user in App.Context.Users.Where(u => u.Roles.name_role == "Клиент").ToList())
             {
                 var client = user.Clients.FirstOrDefault();
 
