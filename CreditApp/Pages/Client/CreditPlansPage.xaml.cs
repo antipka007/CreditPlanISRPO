@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ namespace CreditApp.Pages.Client
     public partial class CreditPlansPage : Page
     {
         private CreditPlans _selectedPlan;
+        private List<CreditPlans> _allPlans = new List<CreditPlans>();
 
         public CreditPlansPage()
         {
@@ -20,7 +22,42 @@ namespace CreditApp.Pages.Client
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            plansGrid.ItemsSource = App.Context.CreditPlans.ToList();
+            _allPlans = App.Context.CreditPlans.ToList();
+            ApplyFilter();
+        }
+
+        private void Filter_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ApplyFilter();
+        }
+
+        private void clearFilterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            percentFilterBox.Clear();
+            maxFilterBox.Clear();
+        }
+
+        private void ApplyFilter()
+        {
+            decimal percentFilter;
+            bool hasPercentFilter = decimal.TryParse(percentFilterBox.Text.Trim(), out percentFilter);
+
+            decimal maxFilter;
+            bool hasMaxFilter = decimal.TryParse(maxFilterBox.Text.Trim(), out maxFilter);
+
+            IEnumerable<CreditPlans> filtered = _allPlans;
+
+            if (hasPercentFilter)
+            {
+                filtered = filtered.Where(p => p.cred_percent <= percentFilter);
+            }
+
+            if (hasMaxFilter)
+            {
+                filtered = filtered.Where(p => p.max_balance >= maxFilter);
+            }
+
+            plansGrid.ItemsSource = filtered.ToList();
         }
 
         private void plansGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

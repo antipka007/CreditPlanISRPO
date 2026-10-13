@@ -10,19 +10,39 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Vertical">
-        <TextBlock Text="Кредитные планы"
+
+        <TextBlock Grid.Row="0"
+                   Text="Кредитные планы"
                    Style="{StaticResource SubTitleText}"/>
-        <TextBlock Text="Выберите план, укажите сумму и срок, затем отправьте заявку"
-                   FontSize="13"
-                   Foreground="{StaticResource MutedBrush}"
-                   Margin="10,2,10,0"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10,4,10,0" VerticalAlignment="Bottom">
+            <StackPanel>
+                <Label Content="Процент до, %" Style="{StaticResource FieldLabel}"/>
+                <TextBox x:Name="percentFilterBox"
+                         Style="{StaticResource InputBox}"
+                         Width="140"
+                         TextChanged="Filter_TextChanged"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Макс. сумма от" Style="{StaticResource FieldLabel}"/>
+                <TextBox x:Name="maxFilterBox"
+                         Style="{StaticResource InputBox}"
+                         Width="160"
+                         TextChanged="Filter_TextChanged"/>
+            </StackPanel>
+            <Button Content="Сбросить"
+                    Style="{StaticResource PrimaryButton}"
+                    FontSize="14"
+                    Padding="12,5"
+                    VerticalAlignment="Bottom"
+                    Click="clearFilterBtn_Click"/>
         </StackPanel>
 
-        <DataGrid Grid.Row="1"
+        <DataGrid Grid.Row="2"
                   x:Name="plansGrid"
                   Style="{StaticResource DataGridStyle}"
                   Margin="10"
@@ -34,7 +54,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Border Grid.Row="2"
+        <Border Grid.Row="3"
                 Background="White"
                 BorderBrush="{StaticResource BorderBrushLight}"
                 BorderThickness="1"
